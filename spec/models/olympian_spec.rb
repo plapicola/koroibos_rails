@@ -8,4 +8,8 @@ RSpec.describe Olympian, type: :model do
     it {should have_many(:events).through(:olympian_events)}
     it {should have_many :medals}
   end
+
+  describe 'Validations' do
+    it {should define_enum_for(:sex).with(%i(male female))}
+  end
 end
