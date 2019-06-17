@@ -12,4 +12,5 @@ RSpec.describe Olympian, type: :model do
   describe 'Validations' do
     it {should define_enum_for(:sex).with_values(%i(male female))}
   end
+
 end

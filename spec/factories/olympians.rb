@@ -5,7 +5,7 @@ FactoryBot.define do
     height { 1 }
     weight { 1 }
     sex { 1 }
-    team { nil }
-    sport { nil }
+    team
+    sport
   end
 end
