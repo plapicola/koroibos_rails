@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :olympian_event do
-    olympian { nil }
-    event { nil }
+    olympian
+    event
   end
 end
