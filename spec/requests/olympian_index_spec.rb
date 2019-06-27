@@ -14,9 +14,10 @@ RSpec.describe 'Olympian API', type: :request do
          it 'returns all olympians in the system and their count of medals' do
             get '/api/v1/olympians'
 
-            olympians = JSON.parse(response, symbolize_names: true)[:olympians]
+            olympians = JSON.parse(response.body, symbolize_names: true)
 
             expect(olympians).to be_a Array
+            expect(olympians.length).to eq(2)
             expect(olympians[0]).to be_a Hash
             expect(olympians[0][:name]).to eq(@olympian_1.name)
             expect(olympians[0][:age]).to eq(@olympian_1.age)
