@@ -58,7 +58,7 @@ RSpec.describe Olympian, type: :model do
         olympians = Olympian.oldest
         
         expect(olympians.length).to eq(1)
-        expect(olympians[0]).to eq(@olympian_2)
+        expect(olympians[0]).to eq(@olympian_1)
         expect(olympians[0].total_medals_won).to eq(1)
       end
     end
