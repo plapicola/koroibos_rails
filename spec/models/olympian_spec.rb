@@ -37,6 +37,31 @@ RSpec.describe Olympian, type: :model do
         expect(olympians[1].total_medals_won).to eq(0)
       end
     end
+
+    describe 'youngest' do
+      it 'should return the youngest olympian in the system with their medal count' do
+        olympians = Olympian.youngest
+        
+        expect(olympians.length).to eq(1)
+        expect(olympians[0]).to eq(@olympian_2)
+        expect(olympians[0].total_medals_won).to eq(0)
+      end
+    end
+    
+    describe 'oldest' do
+      before :each do
+        @skeet = create(:event, name: "Skeet")
+        @mike_gold = EventMedalist.create(event: @skeet, olympian: @olympian_1, medal: :gold)
+      end
+
+      it 'should return the oldest olympian in the system with their medal count' do
+        olympians = Olympian.oldest
+        
+        expect(olympians.length).to eq(1)
+        expect(olympians[0]).to eq(@olympian_1)
+        expect(olympians[0].total_medals_won).to eq(1)
+      end
+    end
   end
 
 end

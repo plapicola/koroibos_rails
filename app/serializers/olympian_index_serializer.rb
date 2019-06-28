@@ -1,7 +1,7 @@
 class OlympianIndexSerializer
    class << self
       def format_all(olympians)
-         olympians.map {|olympian| format_one(olympian)}
+         {olympians: olympians.map {|olympian| format_one(olympian)}}
       end
 
       def format_one(olympian)
