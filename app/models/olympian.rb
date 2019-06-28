@@ -23,4 +23,13 @@ class Olympian < ApplicationRecord
     .order(age: :asc)
     .limit(1)
   end
+
+  def self.oldest
+    left_joins(:medals)
+    .select("olympians.*, COUNT(event_medalists.id) AS total_medals_won")
+    .group(:id)
+    .includes(:team, :sport)
+    .order(age: :desc)
+    .limit(1)
+  end
 end
