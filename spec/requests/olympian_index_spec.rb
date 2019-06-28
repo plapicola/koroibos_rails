@@ -43,7 +43,7 @@ RSpec.describe 'Olympian API', type: :request do
             expect(olympians[0][:age]).to eq(@olympian_2.age)
             expect(olympians[0][:sport]).to eq(@olympian_2.sport.name)
             expect(olympians[0][:team]).to eq(@olympian_2.team.name)
-            expect(olympians[0][:total_medals_won]).to eq(1)
+            expect(olympians[0][:total_medals_won]).to eq(0)
          end
       end
    end
