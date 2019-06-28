@@ -45,6 +45,21 @@ RSpec.describe 'Olympian API', type: :request do
             expect(olympians[0][:team]).to eq(@olympian_2.team.name)
             expect(olympians[0][:total_medals_won]).to eq(0)
          end
+
+         it 'can optionally filter by oldest olympian' do
+            get '/api/v1/olympians?age=oldest'
+
+            olympians = JSON.parse(response.body, symbolize_names: true)[:olympians]
+
+            expect(olympians).to be_a Array
+            expect(olympians.length).to eq(1)
+            expect(olympians[0]).to be_a Hash
+            expect(olympians[0][:name]).to eq(@olympian_1.name)
+            expect(olympians[0][:age]).to eq(@olympian_1.age)
+            expect(olympians[0][:sport]).to eq(@olympian_1.sport.name)
+            expect(olympians[0][:team]).to eq(@olympian_1.team.name)
+            expect(olympians[0][:total_medals_won]).to eq(1)
+         end
       end
    end
 end
